@@ -21,17 +21,18 @@ label2id = {
 def VOC2YOLO(xmlPath):
     xmlfiles = glob.glob(xmlPath+"/*.xml")
     for xmlfile in xmlfiles:
+        print(xmlfile)
         basename = os.path.basename(xmlfile)
-        tree = ET.parse(xml_file)
+        tree = ET.parse(xmlfile)
         root = tree.getroot()
         with open(basename[:-4]+'.txt','w+') as fp:
             width = int(root.find('size')[0].text)
             height = int(root.find('size')[1].text)
             for member in root.findall('object'):
                 item = ""
-                item += label2id[member[0]]
+                item += label2id[member[0].text]
                 xmin = int(member[4][0].text)
-                ymin = int(float(member[4][1].text))
+                ymin = int(member[4][1].text)
                 xmax = int(member[4][2].text)
                 ymax = int(member[4][3].text)
 
