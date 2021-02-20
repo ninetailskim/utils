@@ -6,8 +6,8 @@ import shutil
 xmlfilepath=r'merged_xml'  
 saveBasePath=r"./annotations"  
   
-trainval_percent=0.93
-train_percent=0.92
+trainval_percent=1
+train_percent=0.96
 total_xml = os.listdir(xmlfilepath)  
 num=len(total_xml)  
 list=range(num)  

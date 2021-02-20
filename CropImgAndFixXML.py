@@ -1,3 +1,9 @@
+'''python CropImgAndFixXML.py 
+--imgpath=D:\exp\images 
+--xmlpath=D:\exp\merged_xml 
+--newimgpath=D:\exp\images2 
+--newxmlpath=D:\exp\merged_xml2
+'''
 import argparse
 import os
 import cv2
@@ -21,7 +27,10 @@ def CropImgAndFixXML(imgpath, xmlpath, newimgpath, newxmlpath):
 
     imglist = glob.glob(os.path.join(imgpath, '*.jpg'))
     imglist = sorted(imglist)
+    index = 0
     for imgfile in imglist:
+        print(index,' / ', len(imglist))
+        index += 1
         basename = os.path.basename(imgfile)
         file, ext = os.path.splitext(basename)
         xmlfile = os.path.join(xmlpath, file+'.xml')
