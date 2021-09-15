@@ -17,7 +17,7 @@ def makepath(path):
         os.makedirs(path)
 
 
-def CropImgAndFixXML(imgpath, xmlpath, newimgpath, newxmlpath):
+def CropImgAndFixXML(imgpath, xmlpath, newimgpath, newxmlpath, usexml=False):
 
     tmpath = os.path.join(newimgpath,'tmp')
 
