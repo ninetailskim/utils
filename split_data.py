@@ -6,7 +6,8 @@ import os
 
 
 def split_data(dataPath, ratio):
-    imglist = glob.glob(dataPath + '/*.png') + glob.glob(dataPath + '/*.jpg')
+    # imglist = glob.glob(dataPath + '/*.png') + glob.glob(dataPath + '/*.jpg')
+    imglist = glob.glob(dataPath + '/*.txt')
     print(imglist)
     random.shuffle(imglist)
 
@@ -14,7 +15,7 @@ def split_data(dataPath, ratio):
 
     trainPath = os.path.join(dataPath, 'train')
     if not os.path.exists(trainPath):
-        os.makedirs(trainPath)
+        os.makedirs(trainPath, exist_ok=True)
 
     for img in imglist[:splitindex]:
         basename = os.path.basename(img)
@@ -23,7 +24,7 @@ def split_data(dataPath, ratio):
 
     testPath = os.path.join(dataPath, 'test')
     if not os.path.exists(testPath):
-        os.makedirs(testPath)
+        os.makedirs(testPath, exist_ok=True)
 
     for img in imglist[splitindex:]:
         basename = os.path.basename(img)
